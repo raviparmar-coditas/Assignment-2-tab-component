@@ -1,0 +1,45 @@
+@import './tabs-map.scss';
+
+.container{
+    position: relative;
+    overflow: auto;
+    background-color: var(--card-background-color);
+
+    .tabs-container{
+        display: flex;
+        width: 100%;
+        height: var(--tab-height);
+        justify-content: space-between;
+        .tab-item{
+            padding: 12px 16px;
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            cursor: pointer;
+            font-weight: var(--tab-font-weight-regular);
+            color: var(--tab-font-color);
+
+            p{
+                padding: 0;
+                margin: 0;
+                font-size: $tab-font-size;
+            }
+            
+        }
+    }
+    .tab-indicator{
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        height: 2px;
+        background-color: black;
+        transition: cubic-bezier(0.42,0,0.58,0) 240ms;
+    }
+
+}
+
+.active{
+    color: var(--active-tab-indicator) !important;
+    font-weight: var(--tab-font-weight-semi-bold) !important;
+}
+

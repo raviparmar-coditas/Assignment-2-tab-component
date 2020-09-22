@@ -1,0 +1,11 @@
+:host{
+    --tab-font-family: var(--global-font-family);
+    --tab-background-color: var(--neutral);
+    --active-tab-indicator: var(--secondary);
+    --inactive-tab-indicator: var(--separator-01);
+    --tab-font-weight-regular: var(--font-weight-regular);
+    --tab-font-weight-semi-bold: var(--font-weight-semi-bold);
+    --tab-height: 40px;
+    --tab-font-color: var(--tertiary-text)
+}
+$tab-font-size : 1.4rem;
