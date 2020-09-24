@@ -11,6 +11,7 @@
     height: var(--tab-height);
     justify-content: space-between;
     .tab-item {
+      position: relative;
       padding: 12px 16px;
       flex: 1;
       display: flex;
@@ -28,6 +29,17 @@
         font-size: $tab-font-size;
       }
     }
+    .tab-item::after
+    {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      border-bottom: 2px solid var(--inactive-tab-indicator);
+      width: -webkit-fill-available;
+      display: block;
+      margin: 0 2px;
+    }
+
   }
   .tab-indicator {
     position: absolute;
