@@ -9,12 +9,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 import { html, customElement, LitElement } from "lit-element";
 import styles from "./tabs-css";
+import "@orxe-components/icons";
+import "@orxe-components/icon";
 let OrxeTabs = class OrxeTabs extends LitElement {
     constructor() {
         super();
         this.tabs = [];
-        this.changetab = (params) => {
-            console.log(params);
+        this.changeTab = (params) => {
             let tabWidth = this.renderRoot.querySelectorAll(`${params}`)[0]['offsetWidth'].toString();
             let tabOffsetLeft = this.renderRoot.querySelectorAll(`${params}`)[0]['offsetLeft'].toString();
             this.renderRoot.querySelectorAll(".tab-indicator")[0]['style']['width'] = `${tabWidth}px`;
@@ -22,7 +23,11 @@ let OrxeTabs = class OrxeTabs extends LitElement {
             this.renderRoot.querySelectorAll(".active")[0]['classList'].remove('active');
             this.renderRoot.querySelectorAll(`${params}`)[0]['classList'].add('active');
         };
-        this.tabs = ['Label1', 'Label2', 'Label3'];
+        this.tabs = [
+            { label: "Label 1", id: "Lable1", icon: "ic-hotel" },
+            { label: "Label 2", id: "Lable2", icon: "ic-car" },
+            { label: "Label 3", id: "Lable3" }
+        ];
     }
     static get properties() {
         return {
@@ -34,9 +39,10 @@ let OrxeTabs = class OrxeTabs extends LitElement {
     <div class="container">
       <div class="tabs-container">
         ${this.tabs.map(item => html `
-        <div id="${item}" class="tab-item" @click="${() => this.changetab(`#${item}`)}">
+        <div id="${item.id}" class="tab-item" @click="${() => this.changeTab(`#${item.id}`)}">
+            ${this.renderIcon(item.icon)}
           <p>
-          ${item}
+          ${item.label}
           </p>
         </div>
         `)}
@@ -46,10 +52,21 @@ let OrxeTabs = class OrxeTabs extends LitElement {
       </div>
     `;
     }
-    updated() {
-        let tabWidth = this.renderRoot.querySelectorAll(`#${this.tabs[0]}`)[0]['offsetWidth'].toString();
+    firstUpdated() {
+        let tabWidth = this.renderRoot.querySelectorAll(`#${this.tabs[0].id}`)[0]['offsetWidth'].toString();
         this.renderRoot.querySelectorAll(".tab-indicator")[0]['style']['width'] = `${tabWidth}px`;
-        this.renderRoot.querySelectorAll(`#${this.tabs[0]}`)[0]['classList'].add('active');
+        this.renderRoot.querySelectorAll(`#${this.tabs[0].id}`)[0]['classList'].add('active');
+    }
+    renderIcon(icon) {
+        let result = html ``;
+        if (icon) {
+            result = html `
+    <div class="tabs-icon">   
+    <orxe-icon icon="${icon}" type="small" size="small"></orxe-icon>
+    </div>
+  `;
+        }
+        return result;
     }
 };
 OrxeTabs.styles = styles;

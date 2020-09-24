@@ -1,6 +1,8 @@
 import { LitElement } from "lit-element";
+import "@orxe-components/icons";
+import "@orxe-components/icon";
 export default class OrxeTabs extends LitElement {
-    tabs: Array<string>;
+    tabs: Array<any>;
     static get properties(): {
         tabs: {
             type: ArrayConstructor;
@@ -8,7 +10,8 @@ export default class OrxeTabs extends LitElement {
     };
     constructor();
     render(): import("lit-element").TemplateResult;
-    updated(): void;
-    changetab: (params: any) => void;
+    firstUpdated(): void;
+    changeTab: (params: any) => void;
+    renderIcon(icon: any): import("lit-element").TemplateResult;
     static styles: import("lit-element").CSSResult;
 }
