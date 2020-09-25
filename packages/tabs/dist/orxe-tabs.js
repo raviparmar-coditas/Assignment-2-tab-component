@@ -22,6 +22,12 @@ let OrxeTabs = class OrxeTabs extends LitElement {
             this.renderRoot.querySelectorAll(".tab-indicator")[0]['style']['left'] = `${tabOffsetLeft}px`;
             this.renderRoot.querySelectorAll(".active")[0]['classList'].remove('active');
             this.renderRoot.querySelectorAll(`${params}`)[0]['classList'].add('active');
+            const event = new CustomEvent('tabEvent', {
+                detail: {
+                    tabId: params
+                }
+            });
+            this.dispatchEvent(event);
         };
         this.tabs = [
             { label: "Label 1", id: "Lable1", icon: "ic-hotel" },
@@ -39,7 +45,7 @@ let OrxeTabs = class OrxeTabs extends LitElement {
     <div class="container">
       <div class="tabs-container">
         ${this.tabs.map(item => html `
-        <div id="${item.id}" class="tab-item" @click="${() => this.changeTab(`#${item.id}`)}">
+        <div id="${item.id}" class="tab-item" @click=${() => this.changeTab(`#${item.id}`)}>
             ${this.renderIcon(item.icon)}
           <p>
           ${item.label}
