@@ -38,7 +38,7 @@ Whenever the value of tabs is clicked, it fires a custom event named "tabEvent".
 You can attach an event listener on the component to get the actual value of tabs clicked
 
 ```js
-const myElement = document.querySelector('orxe-counter');
+const myElement = document.querySelector('orxe-tab');
   myElement.addEventListener('tabEvent', (e) => {
     console.log(e.detail)
   });
