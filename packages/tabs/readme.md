@@ -20,6 +20,8 @@ A tab component in ORXe show tab view.
 
  <orxe-tabs .tabs=${tabsData}>
   </orxe-tabs>
+
+
 <!-- with icon -->
    tabsData = [
       {label:"Hotel",id:"Lable1",icon:"ic-hotel"},
