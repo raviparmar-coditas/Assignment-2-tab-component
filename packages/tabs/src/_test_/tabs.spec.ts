@@ -13,10 +13,18 @@ describe('orxe-tabs', () => {
   afterEach(async function() {
     await tabs.remove();
   });
+  function getByTestId(id: string): HTMLElement {
+    return tabs.shadowRoot.querySelector(`[data-testid=${id}]`);
+  }
 
   it('should function call render', () => {
     expect(tabs.render()).toBeTruthy();
   });
 
+  it('check on click tab add active class',async ()=>{
+    const tabClick = getByTestId('tab-active-class-on-click');
+    await tabClick.click();
+    expect(tabClick).toHaveClass('active');
+  });
   
 });

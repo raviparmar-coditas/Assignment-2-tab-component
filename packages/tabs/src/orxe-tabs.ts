@@ -29,7 +29,7 @@ export default class OrxeTabs extends LitElement {
     <div class="container">
       <div class="tabs-container">
         ${this.tabs.map(item => html`
-        <div id="${item.id}" class="tab-item" @click=${()=>this.changeTab(`#${item.id}`)}>
+        <div data-testid="tab-active-class-on-click"  id="${item.id}" class="tab-item" @click=${()=>this.changeTab(`#${item.id}`)}>
             ${this.renderIcon(item.icon)}
           <p>
           ${item.label}
@@ -61,7 +61,9 @@ export default class OrxeTabs extends LitElement {
     this.renderRoot.querySelectorAll<HTMLElement>(".tab-indicator")[0]['style']['left'] = `${tabOffsetLeft}px`;
     this.renderRoot.querySelectorAll<HTMLElement>(".active")[0]['classList'].remove('active');
     this.renderRoot.querySelectorAll<HTMLElement>(`${params}`)[0]['classList'].add('active');
-
+  /**
+   * output event for onclick tab
+   */
     const event = new CustomEvent('tabEvent',{
       detail:{
         tabId:params
