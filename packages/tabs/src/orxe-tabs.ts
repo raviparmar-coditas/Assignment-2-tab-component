@@ -2,8 +2,14 @@ import { html, customElement, LitElement } from "lit-element";
 import styles from "./tabs-css";
 import"@orxe-components/icons";
 import"@orxe-components/icon"; 
+import {Hookable} from "@orxe-sdk/hooks";
 
 @customElement("orxe-tabs")
+@Hookable({​​​​​​​​
+  selector: 'orxe-tabs',
+  hoooks: ['changeTab'],
+ }​​​​​​​​)
+ 
 export default class OrxeTabs extends LitElement {
 
   tabs :Array<any> =[];
@@ -61,7 +67,9 @@ export default class OrxeTabs extends LitElement {
     this.renderRoot.querySelectorAll<HTMLElement>(".tab-indicator")[0]['style']['left'] = `${tabOffsetLeft}px`;
     this.renderRoot.querySelectorAll<HTMLElement>(".active")[0]['classList'].remove('active');
     this.renderRoot.querySelectorAll<HTMLElement>(`${params}`)[0]['classList'].add('active');
-  /**
+  console.log("tabs clicked");
+  
+    /**
    * output event for onclick tab
    */
     const event = new CustomEvent('tabEvent',{
